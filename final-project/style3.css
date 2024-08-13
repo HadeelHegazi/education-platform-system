@@ -1,0 +1,1242 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+:root {
+	--poppins: 'Poppins', sans-serif;
+	--lato: 'Lato', sans-serif;
+
+	--light: #F9F9F9;
+	--blue: #3C91E6;
+	--light-blue: #CFE8FF;
+	--grey: #eee;
+	--dark-grey: #AAAAAA;
+	--dark: #342E37;
+	--red: #DB504A;
+	--yellow: #FFCE26;
+	--light-yellow: #FFF2C6;
+	--orange: #FD7238;
+	--light-orange: #FFE0D3;
+}
+
+html {
+	overflow-x: hidden;
+}
+
+body.dark {
+	--light: #0C0C1E;
+	--grey: #060714;
+	--dark: #FBFBFB;
+}
+
+body {
+	background: var(--grey);
+	overflow-x: hidden;
+}
+
+/* SIDEBAR */
+#sidebar {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 280px;
+	height: 100%;
+	background: var(--light);
+	z-index: 2000;
+	font-family: var(--lato);
+	transition: .3s ease;
+	overflow-x: hidden;
+	scrollbar-width: none;
+}
+#sidebar::state(webkit-scrollbar){
+	display: none;
+}
+
+#sidebar {
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+    overflow: hidden; /* Optional: hide overflow to ensure no scrollbars appear */
+}
+
+
+#sidebar.hide {
+	width: 60px;
+}
+#sidebar .brand {
+	font-size: 24px;
+	font-weight: 700;
+	height: 56px;
+	display: flex;
+	align-items: center;
+	color: var(--blue);
+	position: sticky;
+	top: 0;
+	right: 0;
+	background: var(--light);
+	z-index: 500;
+	padding-bottom: 20px;
+	box-sizing: content-box;
+}
+
+#sidebar .brand .bx {
+	min-width: 60px;
+	display: flex;
+	justify-content: center;
+
+}
+
+#sidebar .side-menu{
+	width: 100%;
+	margin-top: 48px;
+}
+
+#sidebar .side-menu li{
+	height: 48px;
+	background: transparent;
+	margin-right: 6px;
+	border-radius:  0 48px 48px 0;
+	padding: 4px;
+}
+
+#sidebar .side-menu li.active {
+	background: var(--grey);
+	position: relative;
+}
+
+#sidebar .side-menu li.active::before {
+	content: '';
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	top: -40px;
+	left: 0;
+	box-shadow: -20px 20px 0 var(--grey);
+	z-index: -1;
+}
+
+#sidebar .side-menu li.active::after {
+	content: '';
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	left: 0;
+	bottom: -40px;
+	box-shadow: -20px -20px 0 var(--grey);
+	z-index: -1;
+}
+
+#sidebar .side-menu li a {
+    width: 100%;
+    height: 100%;
+    background: var(--light);
+    display: flex;
+    align-items: center;
+    border-radius: 48px;
+    font-size: 16px;
+    color: var(--dark);
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+
+#sidebar .side-menu.top li.active a {
+	color: var(--blue);
+}
+
+#sidebar.hide .side-menu li a {
+	width: calc(48px - (4px * 2));
+	transition: width .3s ease;
+}
+
+#sidebar .side-menu li a.logout{
+	color: var(--red);
+}
+
+#sidebar .side-menu.top li a:hover{
+	color: var(--blue);
+}
+
+#sidebar .side-menu li a .bx{
+	min-width: calc(60px - ((4px + 6px) *2 ));
+	display: flex;
+	justify-content: center;
+
+}
+
+/* SIDEBAR */
+
+
+
+/* CONTENT */
+#profilecontent {
+	position: relative;
+	width: calc(100% - 280px);
+	right: 280px;
+	transition: .3s ease;
+    min-height: 100vh; /* Example: Adjust as needed */
+    padding-top: 0; /* Match the height of nav */
+}
+
+
+#sidebar.hide ~ #profilecontent {
+	width: calc(100% - 60px);
+	right: 60px;
+}
+
+
+/* NAVBAR */
+#profilecontent nav {
+	height: 56px;
+	background: var(--light);
+	padding: 0 24px;
+	display: flex;
+	align-items: center;
+	gap: 24px;
+	font-family: var(--lato);
+	position: sticky;
+	top: 0;
+	right: 0;
+	z-index: 1000;
+}
+#profilecontent nav::before {
+	content: '';
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	bottom: -40px;
+	right: 0;
+	border-radius: 50%;
+	box-shadow: 20px -20px 0 var(--light);
+}
+#profilecontent nav a {
+	color: var(--dark);
+}
+#profilecontent nav .bx.bx-menu {
+	cursor: pointer;
+	color: var(--dark);
+}
+#profilecontent nav .profilenav-link {
+	font-size: 16px;
+	transition: .3s ease;
+}
+#profilecontent nav .profilenav-link:hover {
+	color: var(--blue);
+}
+#profilecontent nav form {
+	max-width: 400px;
+	width: 100%;
+	margin-left: auto;
+}
+#profilecontent nav form .form-input {
+	display: flex;
+	align-items: center;
+	height: 36px;
+}
+#profilecontent nav form .form-input input {
+	flex-grow: 1;
+	padding: 0 16px;
+	height: 100%;
+	border: none;
+	background: var(--grey);
+	border-radius: 36px 0 0 36px;
+	outline: none;
+	width: 100%;
+	color: var(--dark);
+}
+#profilecontent nav form .form-input button {
+	width: 36px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: var(--blue);
+	color: var(--light);
+	font-size: 18px;
+	border: none;
+	outline: none;
+	border-radius: 0 36px 36px 0;
+	cursor: pointer;
+}
+#profilecontent nav .notification {
+	font-size: 20px;
+	position: relative;
+}
+#profilecontent nav .notification .num {
+	position: absolute;
+	top: -6px;
+	left: -6px;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	border: 2px solid var(--light);
+	background: var(--red);
+	color: var(--light);
+	font-weight: 700;
+	font-size: 12px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#profilecontent nav .imgprofile img {
+	width: 36px;
+	height: 36px;
+	object-fit: cover;
+	border-radius: 50%;
+}
+#profilecontent nav .profileswitch-mode {
+	display: block;
+	min-width: 50px;
+	height: 25px;
+	border-radius: 25px;
+	background: var(--grey);
+	cursor: pointer;
+	position: relative;
+}
+#profilecontent nav .profileswitch-mode::before {
+	content: '';
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	bottom: 2px;
+	width: calc(25px - 4px);
+	background: var(--blue);
+	border-radius: 50%;
+	transition: all .3s ease;
+}
+#profilecontent nav #profileswitch-mode:checked + .profileswitch-mode::before {
+	right: calc(100% - (25px - 4px) - 2px);
+}
+/* NAVBAR */
+
+/* MAIN  */
+
+#profilecontent main .main-content .content-section {
+    display: none;
+}
+
+#profilecontent main .main-content .content-section.active {
+    display: block;
+}
+
+#profilecontent main {
+	width: 100%;
+	padding: 36px 24px;
+	font-family: var(--poppins);
+	max-height: calc(100vh - 56px);
+	overflow-y: auto;
+}
+
+#profilecontent main .main-content {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	flex-wrap: wrap;
+}
+
+#profilecontent main .main-content .content-section {
+	display: none;
+	width: 100%;
+	text-align: right;
+}
+
+#profilecontent main .main-content .content-section  h1{
+	font-size: 36px;
+	font-weight: 600;
+	margin-bottom: 10px;
+	color: var(--dark);
+}
+
+#profilecontent main .main-content .content-section .btn-download{
+	top: 20% ;
+	height: 36px;
+	padding: 0 16px;
+	border-radius: 36px;
+	background: var(--blue);
+	color: var(--light);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	font-weight: 500;
+	/* TO MAKE IT ON THE LEFT SIDE */
+	position: absolute;  /* Absolute positioning */
+    left: 30px;  /* Fix to the left edge of the page */
+}
+
+#profilecontent main .box-info{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 24px;
+	margin-top: 36px;
+}
+
+#profilecontent main .box-info li {
+	padding: 24px;
+	background: var(--light);
+	border-radius: 20px;
+	display: flex;
+	align-items: center;
+	position: relative;
+	justify-content: left;
+	left: 0;
+	gap: 24px;
+}
+
+#profilecontent main .box-info li a{
+    width: 100%;
+    height: 100%;
+    background: var(--light);
+    display: flex;
+    align-items: center;
+	gap: 24px;
+	font-size: 16px;
+	color: var(--dark);
+	text-decoration: none; 
+    /* white-space: nowrap; */
+    /* overflow-x: hidden; */
+}
+
+#profilecontent main .box-info li .bx {
+	width: 80px;
+	height: 80px;
+	border-radius: 10px;
+	font-size: 36px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* TO MAKE IT ON THE LEFT SIDE */
+	position: absolute;  /* Absolute positioning */
+    left: 15px;  /* Fix to the left edge of the page */
+}
+#profilecontent main .box-info li i {
+	position: relative;
+	left: 0;
+}
+#profilecontent main .box-info li:nth-child(1) .bx {
+	background: var(--light-blue);
+	color: var(--blue);
+}
+#profilecontent main .box-info li:nth-child(2) .bx {
+	background: var(--light-yellow);
+	color: var(--yellow);
+}
+#profilecontent main .box-info li:nth-child(3) .bx {
+	background: var(--light-orange);
+	color: var(--orange);
+}
+#profilecontent main .box-info li:nth-child(4) .bx {
+	background: var(--light-blue);
+	color: var(--blue);
+}
+#profilecontent main .box-info li:nth-child(5) .bx {
+	background: var(--light-yellow);
+	color: var(--yellow);
+}
+#profilecontent main .box-info li:nth-child(6) .bx {
+	background: var(--light-orange);
+	color: var(--orange);
+}
+#profilecontent main .box-info li .text h3 {
+	font-size: 24px;
+	font-weight: 600;
+	color: var(--dark);
+}
+#profilecontent main .box-info li .text p {
+	color: var(--dark);	
+}
+
+
+
+#profilecontent main .profilecontainer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	flex-wrap: wrap;
+}
+
+#profilecontent main .profilecontainer .profilecontant{
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+	color: var(--dark);
+    padding: 20px 0;
+}
+
+#profilecontent main .profilecontainer .profile-input-box {
+	display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    padding-bottom: 15px;
+}
+
+#profilecontent main .profilecontainer .profile-input-box:nth-child(2n){
+    justify-content: end;
+}
+
+#profilecontent main .profilecontainer .profile-input-box label , .subject-title{
+    width: 95%;
+	color: var(--dark);
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.subject-title {
+    font-size: 16px;
+}
+
+#profilecontent main .profilecontainer .profile-input-box input{
+    height: 50px;
+    width: 95%;
+    border-radius: 10px;
+    border: 2px solid var(--dark);
+    outline: none;
+	padding: 0 16px;
+	background: var(--dark-grey);
+	color: var(--light);
+	font-size : 15px;
+}
+
+#profilecontent main .profilecontainer .profile-input-box select{
+	height: 50px;
+    width: 95%;
+    border-radius: 10px;
+    border: 2px solid var(--dark);
+    outline: none;
+	padding: 0 16px;
+	background: var(--dark-grey);
+	color: var(--light);
+	font-size : 15px;
+}
+#profilecontent main .profilecontainer .profile-input-box .profile-password-button{
+	margin: 15px 0;
+	display: flex;
+	align-items: center;
+	position: relative;
+	justify-content: center;
+}
+
+#profilecontent main .profilecontainer .profile-input-box .profile-toggle-password{
+	width: 80%;
+	height: 10px;
+    padding: 10px;
+    display: block;
+    font-size: px;
+    color: var(--light);
+    border:  2px solid var(--dark);
+    border-radius: 5px;
+	background: var(--dark-grey);
+	cursor: pointer;
+    transition: 0.3s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#profilecontent main .profilecontainer .subject-title .profile-subject-category{
+    color: var(--light);
+}
+
+#profilecontent main .profilecontainer .subject-title .profile-subject-category label{
+	width: 95%;
+	color: var(--dark);
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+#profilecontent main .profilecontainer .profile-button-container {
+    margin: 15px 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+#profilecontent main .profilecontainer .profile-button-container button {
+    width: 80%;
+    margin-top: 10px;
+    padding: 10px;
+    display: block;
+    font-size: 20px;
+    color: var(--light);
+    border:  2px solid var(--dark);
+    border-radius: 5px;
+	background: var(--dark-grey);
+	cursor: pointer;
+    transition: 0.3s;
+}
+
+
+
+/* FOR THE STUDENT */
+#profilecontent main .profilecontainer .profileselect{
+	height: 40px;
+    width: 95%;
+    padding: 0 10px;
+    border-radius: 5px;
+	/* NEED TO CHANGE */
+    border: 2px solid var(--light); 
+    outline: none;
+}
+
+
+/* MAIN  */
+
+/* MESSAGE */
+
+#profilecontent main .message-content {
+    height: 500px;
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 10px 10px 10;
+    color: var(--dark);
+    border: 4px solid var(--dark);
+	overflow-y: auto;
+}
+#profilecontent main .message-content .message-content-right {
+    border-top: none;
+    border-right: 3px solid var(--dark); /* Adjust the width and color as needed */
+    border-bottom: none;
+    border-right: none;
+	background-color: var(--dark-grey);
+    height: 100%;
+    width: 30%;
+    align-items: right;
+    justify-content: right;
+    position: relative;
+	overflow-y: auto;
+}
+.contact-user {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.contact-user li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    align-items: center;
+    padding: 10px;
+    border: 2px solid var(--dark);
+    transition: background-color 0.3s ease;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}
+.contact-user li.active {
+	background: var(--grey);
+	position: relative;
+}
+.contact-user li.active a {
+	color: var(--blue);
+}
+.contact-user li:hover {
+    background-color: var(--light-blue);
+}
+
+.contact-user li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    /* transition: background-color 0.3s ease; */
+}
+
+.contact-user li a:hover {
+    background-color: var(--light-blue);
+}
+
+.contact-user li .bx {
+	width: 40px;
+	height: 40px;
+	border-radius: 10px;
+	font-size: 40px;
+	display: flex;
+	justify-content: right;
+	align-items: right;
+	/* TO MAKE IT ON THE LEFT SIDE */
+	position: relative;  /* Absolute positioning */
+    left: 15px;  /* Fix to the left edge of the page */
+}
+
+.contact-user li i {
+    font-size: 24px;
+	/* border: 2px solid var(--dark); */
+    margin-right: 10px;
+    color: var(--dark);
+}
+
+.contact-user .text {
+    display: flex;
+	margin-right: 10px;
+	/* border: 2px solid var(--dark); */
+    flex-direction: column;
+}
+
+.contact-user .text h3 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--dark);
+}
+
+/* MESSAGES */
+
+#profilecontent main .message-content .message-content-left {
+    height: 100%;
+    width: 70%;
+    align-items: left;
+    justify-content: left;
+	/* background-color: var(--light-blue); */
+    border: 3px solid var(--dark);
+	border-left: none;
+	border-bottom: none;
+	border-top: none;
+	overflow-y: auto;
+}
+
+#profilecontent main #message-header span{
+	height: 70px;
+    width: 100%;
+    align-items: left;
+    justify-content: left;
+	background-color: var(--light-blue);
+    border: 3px solid var(--dark);
+	border-left: none;
+	border-right: none;
+	border-top: none;
+	display: flex;
+	justify-content: right;
+	align-items: center;
+}
+#profilecontent main #message-header .bx {
+	width: 50px;
+	height: 50px;
+	border-radius: 10px;
+	font-size: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* TO MAKE IT ON THE LEFT SIDE */
+	position: relative;  /* Absolute positioning */
+	right: 10px;  /* Fix to the left edge of the page */
+}
+
+#profilecontent main #message-header h3 {
+	display: flex;
+	margin-right: 30px;
+    font-size: 25px; 
+    color: var(--dark);
+}
+#message-container .typing-area {
+	padding: 18px 30px;
+	display: flex;
+	justify-content: space-between;
+	border: 3px solid var(--dark);
+	border-left: none;
+	border-bottom: none;
+	border-right: none;
+}
+#message-container .typing-area input {
+	height: 45px;
+	width: 100%;
+	font-size: 16px;
+	padding: 0 13px;
+	border: 1px solid var(--dark);
+	outline: none;
+	border-radius: 5px 0 0 5px;
+}
+#message-container .typing-area button {
+	color: var(--blue);
+	width: 55px;
+	border: none;
+	outline: none;
+	background-color: var(--light-blue);
+	font-size: 19px;
+	cursor: pointer;
+	opacity: 0.7;
+	border-radius: 0 5px 5px 0;
+	transition: all 0.3s ease;
+}
+#message-container .typing-area button.active {
+	opacity: 1;
+	pointer-events: auto;
+}
+#message-container .messagechatbox {
+	position: relative;
+	min-height: 300px;
+	max-height: 300px;
+	overflow-y: auto;
+	padding: 10px 30px 320px 30px;
+	/* background: var(--light-orange); */
+}
+/* #message-container .messagechatbox .text {
+	position: absolute;
+	top: 45%;
+	left: 50%;
+	width: 100%;
+	text-align: center;
+	transform: translate(-50%, -50%);
+} */
+#message-container .messagechatbox .messagechat {
+	margin: 15px 0;
+	font-size: 40px;
+}
+/* #message-container .messagechatbox .messagechat p {
+	word-wrap: break-word;
+	padding: 8px 16px;
+	box-shadow: 0 0 32px var(--yellow),
+			0rem 16px 16px -16px var(--light-yellow);
+} */
+#message-container .messagechatbox #outgoingmessage {
+	width: 70%;
+	display: flex;
+	border-radius:18px 18px 18px 0 ;
+	background: var(--dark-grey);
+	/* justify-content: center;
+	align-items: center; */
+/* TO MAKE IT ON THE LEFT SIDE */
+	position: relative;  /* Absolute positioning */
+	left: -35%;  /* Fix to the left edge of the page */
+}
+/* #message-container .messagechatbox #outgoingmessage .details {
+	margin-left: auto;
+	width: 100%;
+}
+#message-container .messagechatbox #outgoingmessage .details p {
+	background: var(--light-orange);
+	color: var(--orange);
+	border-radius: 18px 18px 0 18px;
+} */
+#message-container .messagechatbox #incomingmessage {
+	width: 70%;
+	display: flex;
+	align-items: flex-end;
+	border-radius:18px 18px 0 18px;
+	background: var(--light-blue);
+	position: relative;  /* Absolute positioning */
+	right: -5%;  /* Fix to the left edge of the page */
+}
+/* #message-container .messagechatbox #incomingmessage .details {
+	margin-left: auto;
+	margin-left: 10px;
+	width: 100%;
+}
+#message-container .messagechatbox #incomingmessage .details p {
+	background: var(--light-yellow);
+	color: var(--yellow);
+	border-radius: 18px 18px 18px 0 ;
+} */
+
+
+
+#message-container .messagechatbox div{
+	margin: 15px 0;
+	border: 1px solid var(--dark);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#message-container .messagechatbox div p {
+	word-wrap: break-word;
+	padding: 8px 16px;
+	font-size: 15px;
+	
+	/* box-shadow: 0 0 32px var(--yellow), */
+			/* 0rem 16px 16px -16px var(--light-yellow); */
+}
+#message-container .messagechatbox div h3 {
+	word-wrap: break-word;
+	padding: 8px 16px;
+	/* box-shadow: 0 0 32px var(--yellow), */
+		/*	0rem 16px 16px -16px var(--light-yellow); */
+}
+
+
+
+
+
+
+
+
+
+/* /* 
+.messagechatbox .messagechat {
+    display: flex;
+}
+
+.messagechatbox .incomingmessage span {
+    height: 32px;
+    width: 32px;
+    color: #fff;
+    align-self: flex-end;
+    background: #7cc8ff;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 4px;
+    margin: 10px 0  0 7px;
+}
+
+.messagechatbox .outgoingmessage {
+    margin: 20px 0;
+    justify-content: flex-end;
+}
+
+.messagechatbox .messagechat p{
+    color: #fff;
+    max-width: 75%;
+    white-space: pre-wrap;
+    font-size: 0.95rem;
+    padding: 12px 16px;
+    background: #7cc8ff;
+    border-radius: 10px 10px 10px 0;
+}
+.messagechatbox .messagechat p.errorstyle{
+    color: #721c24;
+    background: #f8d7da;
+}
+.messagechatbox .incomingmessage p {
+    color: #000;
+    background: #f2f2f2;
+    border-radius:  10px 10px 0 10px ;
+} */
+
+
+
+
+
+
+
+/* 
+@media (max-width: 490px){
+    .chatbot{
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+    .chatbot .messagechatbox {
+        height: 90%;
+    }
+    .chatbot header span {
+        display: block;
+    }
+} */
+ */
+
+
+
+/* MESSAGE */
+
+
+
+
+/* DIARY */
+
+#profilecontent main .diarycontainer {
+	width: 100%;
+	max-width: 1200px;
+	background-color: var(--light);
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+	overflow-y: auto;
+	height: 90vh;
+	border: 3px solid var(--red);
+}
+#profilecontent main .diarycalendar {
+	width: 100%;
+	border-collapse: collapse;
+	color: var(--dark);
+}
+#profilecontent main .diarycalendar caption {
+	font-size: 24px;
+	text-align: center;
+	margin-bottom: 10px;
+	color: var(--dark);
+	font-weight: bold ;
+}
+#profilecontent main .diarycalendar th, .diarycalendar td {
+	padding: 20px;
+	text-align: center;
+	border: 1px solid var(--dark-grey);
+}
+#profilecontent main .diarycalendar th {
+	background-color: var(--light-blue);
+	color: var(--dark);
+}
+#profilecontent main .diarycalendar td {
+	cursor: pointer;
+	background-color: var(--grey);
+}
+#profilecontent main .diarycalendar td:hover, .diarycalendar td.selected {
+	background-color: var(--light-blue);
+}
+#profilecontent main .note-section {
+	margin-top: 20px;
+	display: flex;
+	gap: 20px;
+}
+#profilecontent main .add-note-form, .note-display {
+	flex: 1;
+	background-color: var(--dark-grey);
+	padding: 20px;
+	border-radius: 5px;
+}
+#profilecontent main .add-note-form textarea {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid var(--dark);
+	border-radius: 5px;
+	resize: none;
+	background-color: var(--light-blue);
+	color: var(--dark);
+}
+#profilecontent main .add-note-form button {
+	margin-top: 10px;
+	padding: 10px 20px;
+	background-color: var(--light-blue);
+	border: none;
+	color: var(--dark);
+	cursor: pointer;
+	border-radius: 5px;
+}
+#profilecontent main .diary-note-list {
+	margin-top: 10px;
+	border-top: 1px solid var(--dark);
+	padding-top: 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+#profilecontent main .diary-note-list button{
+	padding: 10px 20px;
+	background-color: var(--light-blue);
+	border: none;
+	color: var(--dark);
+	cursor: pointer;
+	border-radius: 5px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	/* place-items: center; */
+	/* align-items:center; */
+	/* justify-items: center; */
+}
+#profilecontent main .diary-note-list .course-item {
+    width: 100%;
+
+    background-color: var(--light);
+    border: 1px solid var(--dark);
+    border-radius: 5px;
+    margin-top: 10px; /* Adjust margin as needed */
+    padding: 10px;
+    box-sizing: border-box; /* Ensures padding is included in width */
+    /* display: flex; */
+    justify-content: space-between; /* Positions elements at each end */
+    align-items: center; /* Aligns items vertically */
+}
+
+#profilecontent main .diary-note-list .course-item .course-subject {
+    /* Example styling for subject */
+    /* border: 1px solid var(--red); /* Adjust as needed */
+	color: var(--dark);
+	margin: 5px;
+}
+
+#profilecontent main .diary-note-list .course-item .course-time {
+    /* Example styling for time */
+    /* border: 1px solid var(--orange); /* Adjust as needed */ 
+	color: var(--dark);
+	margin: 5px;
+}
+
+#profilecontent main .diary-note-list .course-item .course-teacher {
+    /* Example styling for teacher */
+    /* border: 1px solid var(--yellow); /* Adjust as needed */ 
+	color: var(--dark);
+	margin: 5px;
+}
+#profilecontent main .note {
+	margin-bottom: 10px;
+	background-color: var(--dark);
+	padding: 10px;
+	border-radius: 5px;
+	color: var(--light);
+}
+#profilecontent main .diary-nav-buttons {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+#profilecontent main .diary-nav-buttons button {
+	padding: 10px 20px;
+	background-color: var(--blue);
+	border: none;
+	color: var(--dark);
+	cursor: pointer;
+	border-radius: 5px;
+}
+#profilecontent main .diary-note-list .note-container {
+    border: 1px solid var(--dark);
+	width:100%;
+	height: 200px;
+	overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: var(--light);
+	display:flex;
+	justify-content:right;
+	align-items:center;
+}
+#profilecontent main .diary-note-list .note-text {
+	color: var(--dark);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+
+
+
+
+
+/* DIARY */
+/* AI */
+
+#profilecontent main .main-content .content-section  .aicontainer{
+	height: 500px;
+    width: 100%;
+    align-items: left;
+    justify-content: left;
+	/* background-color: var(--orange); */
+    /* border: 3px solid var(--dark); */
+	border-radius: 10px;
+	overflow-y: auto;
+}
+
+#profilecontent main .aicontainer .chatbot{
+
+	height: 400px;
+    width: 60%;
+	/* right: 0; */
+	/* bottom: 0; */
+	/* width: 100%; */
+	/* height: 100%; */
+	/* border-radius: 0; */
+}
+#profilecontent main .aicontainer .chatbot .chatbox {
+	height: 90%;
+}
+#profilecontent main .aicontainer .chatbot header span {
+	display: block;
+}
+
+
+
+
+/* AI  */
+
+
+/* CONTENT  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+	#sidebar {
+		width: 200px;
+	}
+
+	#profilecontent {
+		width: calc(100% - 60px);
+		right: 200px;
+	}
+
+	#profilecontent nav .profilenav-link {
+		display: none;
+	}
+}
+
+
+
+
+@media screen and (max-width: 576px) {
+	#profilecontent nav form .form-input input {
+		display: none;
+	}
+
+	#profilecontent nav form .form-input button {
+		width: auto;
+		height: auto;
+		background: transparent;
+		border-radius: none;
+		color: var(--dark);
+	}
+
+	#profilecontent nav form.show .form-input input {
+		display: block;
+		width: 100%;
+	}
+	#profilecontent nav form.show .form-input button {
+		width: 36px;
+		height: 100%;
+		border-radius: 0 36px 36px 0;
+		color: var(--light);
+		background: var(--red);
+	}
+
+	#profilecontent nav form.show ~ .notification,
+	#profilecontent nav form.show ~ .imgprofile {
+		display: none;
+	}
+
+	/* #profilecontent main .box-info {
+		grid-template-columns: 1fr;
+	}
+
+	#profilecontent main .table-data .head {
+		min-width: 420px;
+	}
+	#profilecontent main .table-data .order table {
+		min-width: 420px;
+	}
+	#profilecontent main .table-data .todo .todo-list {
+		min-width: 420px;
+	} */
+}
